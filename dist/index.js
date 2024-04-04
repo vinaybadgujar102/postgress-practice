@@ -34,9 +34,9 @@ function insertUserData(username, password, email) {
         yield client.connect();
         const result = yield client.query(`
         INSERT INTO users (username, password, email)
-        VALUES ('${username}', '${password}', '${email}')
-    `);
+        VALUES ($1,$2,$3) 
+    `, [username, password, email]);
         console.log(result);
     });
 }
-insertUserData("user2", "1234", "abcd@gmail.com");
+insertUserData("user3", "123545", "abcde@gmail.com");
