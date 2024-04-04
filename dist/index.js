@@ -28,4 +28,15 @@ function createUserTable() {
         console.log(result);
     });
 }
-createUserTable();
+//createUserTable();
+function insertUserData(username, password, email) {
+    return __awaiter(this, void 0, void 0, function* () {
+        yield client.connect();
+        const result = yield client.query(`
+        INSERT INTO users (username, password, email)
+        VALUES ('${username}', '${password}', '${email}')
+    `);
+        console.log(result);
+    });
+}
+insertUserData("user2", "1234", "abcd@gmail.com");
